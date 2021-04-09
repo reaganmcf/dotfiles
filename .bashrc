@@ -147,6 +147,9 @@ alias editspacevim="vim ~/.SpaceVim.d/init.toml"
 alias editnvim="vim ~/.config/nvim/init.vim"
 alias editbashrc="vim ~/.bashrc"
 
+### MANPAGER
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
 ### GIT ALIASES
 alias gs="git status"
 alias ga="git add"
