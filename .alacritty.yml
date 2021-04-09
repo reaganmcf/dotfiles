@@ -1,0 +1,29 @@
+selection:
+        save_to_clipboard: true
+
+window:
+  decorations: Full
+
+font:
+  normal:
+    family: FiraMono Nerd Font Mono
+    style: Medium
+
+background_opacity: 0.9
+
+dynamic_title: true
+
+scrolling:
+        history: 1000
+        multiplier: 3
+
+shell:
+  program: /usr/bin/tmux
+
+key_bindings:
+  ### TMUX ###
+  - { key: T, mods: Control, chars: "\x02\x63" } # NEW TAB
+  - { key: Key1, mods: Control, chars: "\x02\x30" } # SWITCH TO TAB 0
+  - { key: Key2, mods: Control, chars: "\x02\x31" } # SWITCH TO TAB 1
+  - { key: Key3, mods: Control, chars: "\x02\x32" } # SWITCH TO TAB 2
+  - { key: Key4, mods: Control, chars: "\x02\x33" } # SWITCH TO TAB 3
