@@ -6,7 +6,7 @@
 " License: GPLv3
 "=============================================================================
 
-execute 'source' fnamemodify(expand('<sfile>'), ':h').'/main.vim'
+"execute 'source' fnamemodify(expand('<sfile>'), ':h').'/main.vim'
 
 "=============
 "BEGIN PLUGINS
@@ -32,9 +32,6 @@ Plug 'junegunn/fzf.vim'
 " GitGutter
 Plug 'airblade/vim-gitgutter'
 
-" Codi
-Plug 'metakirby5/codi.vim'
-
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -58,6 +55,18 @@ Plug 'alx741/vim-rustfmt'
 " fish syntax highlighting
 Plug 'dag/vim-fish'
 
+" gruvbox
+Plug 'morhetz/gruvbox'
+
+" smooth scrolling
+Plug 'psliwka/vim-smoothie'
+
+" buftabline
+Plug 'ap/vim-buftabline'
+
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 "===========
 "END PLUGINS
@@ -79,14 +88,26 @@ nnoremap <C-p> :GFiles<CR>
 " set term colors to 256
 set t_Co=256
 
+" use relative line numbers
+set relativenumber
+
 " set colorscheme
 colorscheme gruvbox
+
+" rustfmt autosave fail silently
+let g:rustfmt_fail_silently = 1
+
+" disable help
+:nmap <F1> <nop>
+
+" use mouse
+set mouse=a
 
 " Airline Configurations
 let g:airline_theme='monochrome'
 let g:airline_section_y=''
 let g:airline_section_x=''
-let g:airline_section_z=''
+"let g:airline_section_z=''
 
 " start deoplete
 let g:deoplete#enable_at_startup = 1
@@ -98,6 +119,9 @@ let g:deoplete#enable_at_startup = 1
 
 " disable vimfiler on welcome screen
 let g:spacevim_enable_vimfiler_welcome = 0
+
+" set background transparent
+hi Normal ctermbg=NONE
 
 " set syntax on by default
 "filetype plugin on
@@ -121,6 +145,9 @@ command IDE :NERDTree | wincmd l | :vsp | wincmd l | :ter
 
 """ clipboard
 set clipboard=unnamedplus
+
+" use firefox-developer-edition for markdown preview
+let g:mkdp_browser = 'firefox-developer-edition'
 
 " Disable Arrow keys in Normal mode
 "map <up> <nop>
