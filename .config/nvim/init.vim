@@ -12,8 +12,8 @@
 "BEGIN PLUGINS
 "=============
 call plug#begin('~/.config/nvim/plugged')
-" Pyton autocomplete
-"Plug 'deoplete-plugins/deoplete-jedi'
+" Pyton formatting
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Nerd tree and nerd tree syntax highlighting
 Plug 'preservim/nerdtree'
@@ -26,8 +26,13 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
 
 " Fuzzy Finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
+
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " GitGutter
 Plug 'airblade/vim-gitgutter'
@@ -42,6 +47,9 @@ Plug 'camspiers/lens.vim'
 
 " Java Syntax Highlighting
 Plug 'uiiaoo/java-syntax.vim'
+
+" React syntax highlighting
+Plug 'maxmellon/vim-jsx-pretty'
 
 " auto indent
 Plug 'tpope/vim-sleuth'
@@ -67,10 +75,19 @@ Plug 'ap/vim-buftabline'
 " coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" es6 syntax
+Plug 'isRuslan/vim-es6'
+
+" css color
+Plug 'ap/vim-css-color'
+
 call plug#end()
 "===========
 "END PLUGINS
 "===========
+
+" set colorscheme
+colorscheme gruvbox
 
 "==================
 "BEGIN KEY BINDINGS
@@ -78,39 +95,87 @@ call plug#end()
 " bind Ctrl + / to open nerd tree
 nnoremap <C-_> :NERDTreeToggle<CR>
 
-" bind Ctrl + P to open fzf
-nnoremap <C-p> :GFiles<CR>
+" bind Ctrl + P to open telescope
+nnoremap <C-p> :Telescope find_files<CR>
+
+" disable help
+:nmap <F1> <nop>
 
 "==================
 "END KEY BINDINGS
 "==================
 
+"==================
+"START SET
+"==================
 " set term colors to 256
 set t_Co=256
 
 " use relative line numbers
 set relativenumber
+set nu
 
-" set colorscheme
-colorscheme gruvbox
+" no need for :noh after searching something
+set nohlsearch
 
-" rustfmt autosave fail silently
-let g:rustfmt_fail_silently = 1
+" Allow buffers to stay alive in background (you can switch between buffers
+" without saving)
+set hidden
 
-" disable help
-:nmap <F1> <nop>
+" No line wrapping
+set nowrap
+
+" smart case searching
+set ignorecase
+set smartcase
+
+" No backups and no temp files
+set noswapfile
+set nobackup
+
+" Keep undo history
+set undodir="~/.vim/undodir"
+set undofile
+
+" Scroll offset - start scrolling when you're near the top or bottom
+set scrolloff=8
+
+" Use a sign column, and the color column to use as a reference for how long
+" lines should be
+set colorcolumn=100
+set signcolumn=yes
 
 " use mouse
 set mouse=a
+
+" clipboard
+set clipboard=unnamedplus
+
+" set background transparent
+hi Normal ctermbg=NONE
+
+" Set GUI Font
+set guifont=FiraMono\ Nerd\ Font\ Mono:16
+
+""" use 2 spaces as tab by default
+filetype indent on
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+"=================
+"END SETS
+"=================
+
+" rustfmt autosave fail silently
+let g:rustfmt_fail_silently = 1
 
 " Airline Configurations
 let g:airline_theme='monochrome'
 let g:airline_section_y=''
 let g:airline_section_x=''
 "let g:airline_section_z=''
-
-" start deoplete
-let g:deoplete#enable_at_startup = 1
 
 " onedark settings
 "let g:onedark_hide_endofbuffer = 1
@@ -120,43 +185,12 @@ let g:deoplete#enable_at_startup = 1
 " disable vimfiler on welcome screen
 let g:spacevim_enable_vimfiler_welcome = 0
 
-" set background transparent
-hi Normal ctermbg=NONE
-
-" set syntax on by default
-"filetype plugin on
-"syntax on
-
-set guifont=FiraMono\ Nerd\ Font\ Mono:16
-
 " use double width devicons glpys
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 2
 
 """ Start NERDTree and put the cursor back in the other window
 "autocmd VimEnter * NERDTree | wincmd p
 
-""" IDE custom command
-"""   - opens NERDTRee on the left, terminal on the bottom
-command IDE :NERDTree | wincmd l | :vsp | wincmd l | :ter
-
 """ Dark / Light Mode
 "command Light :colorscheme NeoSolarized | :set background=light | :AirlineTheme solarized
 "command Dark :colorscheme onedark | :set background=dark | :AirlineTheme onedark
-
-""" clipboard
-set clipboard=unnamedplus
-
-" use firefox-developer-edition for markdown preview
-let g:mkdp_browser = 'firefox-developer-edition'
-
-" Disable Arrow keys in Normal mode
-"map <up> <nop>
-"map <down> <nop>
-"map <left> <nop>
-"map <right> <nop>
-
-" Disable Arrow keys in Insert mode
-"imap <up> <nop>
-"imap <down> <nop>
-"imap <left> <nop>
-""/imap <right> <nop>
