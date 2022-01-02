@@ -1,3 +1,13 @@
+"=============================================================================
+" init.vim --- Entry file for neovim
+" Copyright (c) 2016-2020 Wang Shidong & Contributors
+" Author: Wang Shidong < wsdjeg@outlook.com >
+" URL: https://spacevim.org
+" License: GPLv3
+"=============================================================================
+
+"execute 'source' fnamemodify(expand('<sfile>'), ':h').'/main.vim'
+
 "=============
 "BEGIN PLUGINS
 "=============
@@ -81,7 +91,7 @@ Plug 'isRuslan/vim-es6'
 Plug 'ap/vim-css-color'
 
 " ripgrep
-Plug 'jremmen/vim-ripgrep'
+"Plug 'jremmen/vim-ripgrep'
 
 " vim beautify
 Plug 'maksimr/vim-jsbeautify'
@@ -91,6 +101,16 @@ Plug 'cespare/vim-toml'
 
 " custom nakala syntax highlighting
 Plug 'nakala-lang/nakala.vim'
+
+" MDX syntax highlighting
+Plug 'jxnblk/vim-mdx-js'
+
+" Prettier
+Plug 'prettier/vim-prettier'
+
+" harpoon
+Plug 'nvim-lua/plenary.nvim'
+Plug 'ThePrimeagen/harpoon'
 
 " google codefmt
 Plug 'google/vim-maktaba'
@@ -244,8 +264,6 @@ nnoremap <leader>d :bd<CR>
 " disable coc
 let g:coc_start_at_startup = v:false
 
-" formatting for tsx
-autocmd FileType typescriptreact nnoremap <buffer> <leader>f :call JsxBeautify()<CR>
 
 "==========================
 "END LEADER CUSTOM SORTCUTS
@@ -326,6 +344,26 @@ endif
 " symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
+" harpoon settings
+nmap <leader>m :lua require('harpoon.mark').add_file()<CR>
+nmap <leader>g :lua require('harpoon.ui').toggle_quick_menu()<CR>
+
+" CSS Jump to definition
+function! JumpToCSS()
+  let id_pos = searchpos("id", "nb", line('.'))[1]
+  let class_pos = searchpos("className", "nb", line('.'))[1]
+
+  if class_pos > 0 || id_pos > 0
+    if class_pos < id_pos
+      execute ":vim '#".expand('<cword>')."' **/*.scss"
+    elseif class_pos > id_pos
+      execute ":vim '.".expand('<cword>')."' **/*.scss"
+    endif
+  endif
+endfunction
+
+nnoremap <leader>c :call JumpToCSS()<CR>
+
 """ FixCursorHold
 let g:cursorhold_updatetime = 100
 
@@ -338,11 +376,12 @@ Glaive codefmt google_java_executable="java --add-exports jdk.compiler/com.sun.t
 augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
-  autocmd FileType c,cpp,javascript AutoFormatBuffer clang-format
+  autocmd FileType c,cpp AutoFormatBuffer clang-format
+  autocmd FileType go AutoFormatBuffer gofmt
 augroup END
 
 " autoformatting for jsx
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "========================
 "END PLUGIN CONFIGURATION
@@ -412,8 +451,22 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+local configs = require 'lspconfig/configs'
+
+if not configs.golangcilsp then
+ 	configs.golangcilsp = {
+		default_config = {
+			cmd = {'golangci-lint-langserver'},
+			root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+			init_options = {
+					command = { "golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json" };
+			}
+		};
+	}
+end
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { "rust_analyzer", "tsserver", "hls", "jedi_language_server", "ccls" }
+local servers = { "rust_analyzer", "tsserver", "hls", "jedi_language_server", "ccls", "cssls", "gopls", "golangcilsp" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -423,6 +476,8 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+
+
 
 --capabilities.textDocument.completion.completionItem.snippetSupport = true
 --lspconfig.cssls.setup {
