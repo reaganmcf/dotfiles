@@ -10,6 +10,10 @@ o.clipboard = 'unnamedplus'
 o.swapfile = false
 
 -- Relative line numbers
+o.relativenumber = true
+o.nu = true
+
+-- hide color column, and show sign column
 o.colorcolumn = '0'
 o.signcolumn = 'yes'
 
