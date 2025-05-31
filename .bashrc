@@ -48,6 +48,7 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 ### GIT ALIASES
 alias gs="git status"
 alias ga="git add"
+alias gc="git commit"
 alias gp="git push"
 
 ### STARSHIP
