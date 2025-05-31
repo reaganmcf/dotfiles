@@ -21,12 +21,14 @@ I use [FiraMonoNerdFont](https://www.nerdfonts.com/font-downloads), direct downl
 1. [bat](https://github.com/sharkdp/bat)
 2. [rustup](https://rustup.rs/)
 3. [bpython](https://github.com/bpython/bpython)
+4. [fzf](https://github.com/junegunn/fzf)
 
 ## Editor 
 1. [NeoVim](https://neovim.io/)
 2. Plugins
   - [lazy.nvim](https://github.com/folke/lazy.nvim)
   - [nvim-tree.lua](https://dotfyle.com/plugins/nvim-tree/nvim-tree.lua)
+  - [incline.nvim](https://github.com/b0o/incline.nvim)
   - [nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
   - [zen-mode.nvim](https://github.com/folke/zen-mode.nvim)
   - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
