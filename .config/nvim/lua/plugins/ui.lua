@@ -17,6 +17,12 @@ return {
                     dotfiles = false
                 }
             })
+
+            -- Add relevant keybindings 
+            local map = vim.api.nvim_set_keymap
+            local default_opts = { noremap = true, silent = true }
+            map('n', '<C-n>', ":NvimTreeToggle <CR>", default_opts)
+            map('n', '<C-F>', ":NvimTreeFindFileToggle <CR>", default_opts);
         end
     },
     {

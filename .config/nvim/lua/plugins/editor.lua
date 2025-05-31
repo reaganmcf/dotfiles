@@ -8,7 +8,14 @@ return {
     {
         'ibhagwan/fzf-lua',
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {}
+        config = function()
+            -- set keymap
+            local map = vim.api.nvim_set_keymap
+            local default_opts = { noremap = true, silent = true }
+
+            map('n', '<C-p>', ':FzfLua files<CR>', default_opts) -- Ctrl + P to open file finder
+            map('n', '<C-f>', ':FzfLua grep_project<CR>', default_opts)    -- Ctrl + F to open fuzzy search
+        end
     },
     {
         'folke/zen-mode.nvim',
