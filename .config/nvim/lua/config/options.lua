@@ -1,10 +1,10 @@
-local cmd = vim.cmd -- execute vim commands
-local o = vim.opt	  -- global/buffer/window scoped options
-local g = vim.g		  -- global variables
+local cmd = vim.cmd
+local o = vim.opt
+local g= vim.g
 local exec = vim.api.nvim_exec
 
 -- General settings
-g.mapleader = ' '
+g.mapleader = " "
 o.mouse = 'a'
 o.clipboard = 'unnamedplus'
 o.swapfile = false
@@ -13,38 +13,33 @@ o.swapfile = false
 o.relativenumber = true
 o.nu = true
 
--- use sign column and color column for how long lines should be
+-- hide color column, and show sign column
 o.colorcolumn = '0'
 o.signcolumn = 'yes'
 
 o.termguicolors = true
 
--- No need for :noh after searching something
+-- No need for ':noh' after searching
 o.hlsearch = false
 
 -- Start scrolling 8 lines from the top or bottom
 o.scrolloff = 8
 
--- Allow buffers to stay alive in the background
+-- Allow bufers to stay alive in the background
 o.hidden = true
 
 -- No wrap by default
 o.wrap = false
--- Have line wrapping in Markdown files
+-- but keep it in Markdown files
 exec([[
   autocmd FileType markdown setlocal wrap
 ]], false)
 
--------------------
--- Tabs and Indents
--------------------
+-- Tabs and indents
 o.expandtab = true
-o.shiftwidth = 2
+o.shiftwidth = 4
 o.tabstop = 2
 o.smartindent = true
-
--------------------
--- Startup
 
 
 -- Disable builtins

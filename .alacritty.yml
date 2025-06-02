@@ -2,14 +2,13 @@ selection:
         save_to_clipboard: true
 
 window:
-  decorations: Full
+  decorations: None
+  background_opacity: 0.8
 
 font:
   normal:
     family: FiraMono Nerd Font Mono
     style: Medium
-
-background_opacity: 0.9
 
 dynamic_title: true
 

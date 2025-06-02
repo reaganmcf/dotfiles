@@ -1,18 +1,43 @@
 # dotfiles
 Personal dotfiles and configuration files
 
-# Terminal Setup
-<p align="center"> <img src="https://i.imgur.com/Ny2oawB.png" /> </p>
+# Terminal
 
+## Font
 
-1. [Alacritty](https://github.com/alacritty/alacritty) Terminal Emulator
-2. [colorscript](https://gitlab.com/dwt1/shell-color-scripts) for nice art when terminal opens
-3. [Starship](https://starship.rs) Prompt
-4. [Tmux](https://github.com/tmux/tmux) for tabs
-5. [fish](https://fishshell.com/)
+I use [FiraMonoNerdFont](https://www.nerdfonts.com/font-downloads), direct download link to the zipfile is [here] (https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraMono.zip)
 
-# Vim Setup
-<p align="center"> <img src="https://i.gyazo.com/7bde4d2b632173a2fff2c4b955293549.png"/> </p>
+## Base
+1. [alacritty](https://github.com/alacritty/alacritty)
+2. [tmux](https://github.com/tmux/tmux)
+    - Plugins (via [tpm](https://github.com/tmux-plugins/tpm))
+        - [tmux-gruvbox](https://github.com/egel/tmux-gruvbox)
+3. [starship](https://starship.rs/)
 
+# Tools
+
+## Utils
+
+1. [bat](https://github.com/sharkdp/bat)
+2. [rustup](https://rustup.rs/)
+3. [bpython](https://github.com/bpython/bpython)
+4. [fzf](https://github.com/junegunn/fzf)
+
+## Editor 
 1. [NeoVim](https://neovim.io/)
-2. Lots of vim plugins. Check `.config/nvim/init.vim` for a complete list.
+2. Plugins
+  - [lazy.nvim](https://github.com/folke/lazy.nvim)
+  - [nvim-tree.lua](https://dotfyle.com/plugins/nvim-tree/nvim-tree.lua)
+  - [incline.nvim](https://github.com/b0o/incline.nvim)
+  - [nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
+  - [zen-mode.nvim](https://github.com/folke/zen-mode.nvim)
+  - [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+  - [nvim-lualine](https://github.com/nvim-lualine/lualine.nvim)
+  - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+  - [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
+  - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+  - [blink.cmp](https://github.com/saghen/blink.cmp')
+  - Plugins I am considering trying:
+    - [conform.nvim](https://github.com/stevearc/conform.nvim)
+    - [trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
