@@ -40,7 +40,9 @@ alias clears="clear; source ~/.bashrc"
 alias vim="nvim"
 
 ### CONFIG ALIASES
-alias editbashrc="vim ~/.bashrc"
+alias editbash="vim ~/.bashrc"
+alias editnix="sudo vim /etc/nixos/configuration.nix"
+alias edithypr="vim ~/.config/hyprland/hyprland.conf"
 
 ### MANPAGER
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
