@@ -43,6 +43,7 @@ alias vim="nvim"
 alias editbash="$EDITOR ~/.bashrc"
 alias editnix="sudoedit /etc/nixos/configuration.nix"
 alias edithypr="$EDITOR ~/.config/hypr/hyprland.conf"
+alias editrofi="$EDITOR ~/.config/rofi/config.rasi"
 
 ### MANPAGER
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""

@@ -26,6 +26,11 @@ DOTFILES_CONFIG = {
         'macos': None,
         'windows': None
     },
+    '.config/rofi/config.rasi': {
+        'linux': '~/.config/rofi/config.rasi',
+        'macos': None,
+        'windows': None
+    },
     '.bashrc': {
         'linux': '~/.bashrc',
         'macos': '~/.bashrc',
