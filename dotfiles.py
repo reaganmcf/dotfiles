@@ -21,6 +21,11 @@ DOTFILES_CONFIG = {
         'macos': '~/.config/nvim',
         'windows': '$LOCALAPPDATA/nvim'
     },
+    '.config/hypr/hyprland.conf': {
+        'linux': '~/.config/hypr/hyprland.conf',
+        'macos': None,
+        'windows': None
+    },
     '.bashrc': {
         'linux': '~/.bashrc',
         'macos': '~/.bashrc',
