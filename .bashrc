@@ -57,3 +57,14 @@ alias gap="git add --patch"
 
 ### STARSHIP
 eval "$(starship init bash)"
+
+# opencode
+export PATH=/home/rmcf/.opencode/bin:$PATH
+
+# pnpm
+export PNPM_HOME="/home/rmcf/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

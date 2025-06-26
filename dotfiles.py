@@ -35,6 +35,11 @@ DOTFILES_CONFIG = {
         'linux': '~/.bashrc',
         'macos': '~/.bashrc',
         'windows': None # '~/.zshrc'
+    },
+    'configuration.nix': {
+        'linux': '/etc/nixos/configuration.nix',
+        'macos': None,
+        'windows': None
     }
 }
 
