@@ -2,7 +2,18 @@
 # ~/.bashrc
 #
 
-[[ $- != *i* ]] && return
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't duplicate lines or lines starting with space in history
+HISTCONTROL=ignoreboth
+# append to the history file, don't overwrite it
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # Enable color support for ls and grep
 if [ -x /usr/bin/dircolors ]; then
@@ -24,6 +35,11 @@ xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
 
+### PATH Modifiers ###
+if [ -f "$HOME/.config/env" ]; then
+  . $HOME/.config/env
+fi
+
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 # it regains control.  #65623
@@ -31,10 +47,8 @@ complete -cf sudo
 shopt -s checkwinsize
 shopt -s expand_aliases
 
-# Enable history appending instead of overwriting.  #139609
-shopt -s histappend
-
 ### ALIASES ###
+alias nvim="$HOME/tools/nvim/bin/nvim"
 EDITOR="nvim"
 alias clears="clear; source ~/.bashrc"
 alias vim="nvim"
@@ -57,14 +71,3 @@ alias gap="git add --patch"
 
 ### STARSHIP
 eval "$(starship init bash)"
-
-# opencode
-export PATH=/home/rmcf/.opencode/bin:$PATH
-
-# pnpm
-export PNPM_HOME="/home/rmcf/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
