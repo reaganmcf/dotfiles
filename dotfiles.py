@@ -11,9 +11,9 @@ DOTFILES_CONFIG = {
         'macos': '~/.tmux.conf',
         'windows': '~/.tmux.conf'
     },
-    '.alacritty.yml': {
-        'linux': '~/.alacritty.yml',
-        'macos': '~/.alacritty.yml',
+    '.alacritty.toml': {
+        'linux': '~/.alacritty.toml',
+        'macos': '~/.alacritty.toml',
         'windows': None 
     },
     '.config/nvim': {

@@ -36,8 +36,8 @@ xhost +local:root > /dev/null 2>&1
 complete -cf sudo
 
 ### PATH Modifiers ###
-if [ -f "$HOME/.config/env" ]; then
-  . $HOME/.config/env
+if [ -f "$HOME/.cargo/env" ]; then
+    . $HOME/.cargo/env
 fi
 
 # Bash won't get SIGWINCH if another process is in the foreground.
