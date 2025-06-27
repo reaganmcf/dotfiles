@@ -34,7 +34,7 @@ DOTFILES_CONFIG = {
     '.bashrc': {
         'linux': '~/.bashrc',
         'macos': '~/.bashrc',
-        'windows': None # '~/.zshrc'
+        'windows': None 
     }
 }
 
