@@ -71,3 +71,13 @@ alias gap="git add --patch"
 
 ### STARSHIP
 eval "$(starship init bash)"
+
+# opencode
+export PATH=/home/rmcf/.opencode/bin:$PATH
+
+# env vars I don't want to check into git
+if [ -f "$HOME/.env.sh" ]; then
+    . "$HOME/.env.sh"
+fi
+
+. "$HOME/.local/bin/env"
