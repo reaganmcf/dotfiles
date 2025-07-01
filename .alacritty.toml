@@ -37,10 +37,10 @@ multiplier = 3
 save_to_clipboard = true
 
 [terminal.shell]
-program = "/usr/bin/tmux"
+program = "tmux"
 
 [window]
 opacity = 0.9
-decorations = "None"
+decorations = "Full"
 
 [keyboard]
