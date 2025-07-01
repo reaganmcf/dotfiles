@@ -40,6 +40,11 @@ if [ -f "$HOME/.cargo/env" ]; then
     . $HOME/.cargo/env
 fi
 
+### Add homebrew if its there (macos)
+if [ -f "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 # it regains control.  #65623
@@ -58,6 +63,7 @@ alias editbash="$EDITOR ~/.bashrc"
 alias editnix="sudoedit /etc/nixos/configuration.nix"
 alias edithypr="$EDITOR ~/.config/hypr/hyprland.conf"
 alias editrofi="$EDITOR ~/.config/rofi/config.rasi"
+alias editalac="$EDITOR ~/.alacritty.toml"
 
 ### MANPAGER
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
@@ -73,11 +79,16 @@ alias gap="git add --patch"
 eval "$(starship init bash)"
 
 # opencode
-export PATH=/home/rmcf/.opencode/bin:$PATH
+if [ -d "$HOME/.opencode/bin" ]; then
+    export PATH=/home/rmcf/.opencode/bin:$PATH
+fi
 
 # env vars I don't want to check into git
 if [ -f "$HOME/.env.sh" ]; then
     . "$HOME/.env.sh"
 fi
 
-. "$HOME/.local/bin/env"
+# uv
+if [ -f "$HOME/.local/bin/env" ]; then
+    . "$HOME/.local/bin/env"
+fi
