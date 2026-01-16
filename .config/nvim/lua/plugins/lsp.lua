@@ -19,6 +19,9 @@ return {
             -- Lua
             vim.lsp.enable('lua')
 
+            -- Typescript
+            vim.lsp.enable('ts_ls')
+
             -- set keybindings
             local opts = { noremap = true, silent = true }
             local map = vim.api.nvim_set_keymap

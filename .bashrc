@@ -64,6 +64,8 @@ alias editnix="sudoedit /etc/nixos/configuration.nix"
 alias edithypr="$EDITOR ~/.config/hypr/hyprland.conf"
 alias editrofi="$EDITOR ~/.config/rofi/config.rasi"
 alias editalac="$EDITOR ~/.alacritty.toml"
+alias edittmux="$EDITOR ~/.tmux.conf"
+alias editghostty="$EDITOR ~/.config/ghostty/config"
 
 ### MANPAGER
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""

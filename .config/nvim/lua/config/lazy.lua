@@ -36,8 +36,7 @@ require("lazy").setup({
     lazy = false
   },
   -- colorscheme that will be used when installing plugins.
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = { enabled = false },
   performance = {
     cache = {
       enabled = true

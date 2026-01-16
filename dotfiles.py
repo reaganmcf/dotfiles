@@ -31,6 +31,11 @@ DOTFILES_CONFIG = {
         'macos': None,
         'windows': None
     },
+    '.config/ghostty/config': {
+        'linux': None,
+        'macos': '~/.config/ghostty/config',
+        'windows': None
+    },
     '.bashrc': {
         'linux': '~/.bashrc',
         'macos': '~/.bashrc',
