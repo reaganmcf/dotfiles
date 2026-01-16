@@ -28,8 +28,8 @@ o.scrolloff = 8
 -- Allow bufers to stay alive in the background
 o.hidden = true
 
--- No wrap by default
-o.wrap = false
+-- Wrap by default
+o.wrap = true
 -- but keep it in Markdown files
 exec([[
   autocmd FileType markdown setlocal wrap
